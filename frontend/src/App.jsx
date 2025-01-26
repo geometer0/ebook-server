@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+
+
 function App() {
   const [count, setCount] = useState(0)
+  const [pdfs, setPdfs] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:3000').then(res => res.json())
+      .then(data => {
+        setPdfs(data.pdfs);  // Assuming you've set up state with useState
+      });
+  }, []);
 
   return (
     <>
@@ -28,6 +38,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <ul>
+        {pdfs.map(pdf => (
+          <li key={pdf}>{pdf}</li>
+        ))}
+      </ul>
     </>
   )
 }
