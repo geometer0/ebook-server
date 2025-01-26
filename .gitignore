@@ -18,3 +18,5 @@
 
 # System files
 .DS_Store
+
+**/pdfs
