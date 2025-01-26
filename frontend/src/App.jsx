@@ -40,7 +40,7 @@ function App() {
       </p>
       <ul>
         {pdfs.map(pdf => (
-          <li key={pdf}>{pdf}</li>
+          <li key={pdf}>{pdf.slice(0,-4)}</li>
         ))}
       </ul>
     </>
