@@ -12,7 +12,7 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000').then(res => res.json())
       .then(data => {
-        setPdfs(data.pdfs);  // Assuming you've set up state with useState
+        setPdfs(data.pdfs);
       });
   }, []);
 
@@ -40,7 +40,7 @@ function App() {
       </p>
       <ul>
         {pdfs.map(pdf => (
-          <li key={pdf}>{pdf.slice(0,-4)}</li>
+          <li key={pdf}><a target="_blank" href={'pdfs/' + pdf}>{pdf.slice(0,-4)}</a></li>
         ))}
       </ul>
     </>
