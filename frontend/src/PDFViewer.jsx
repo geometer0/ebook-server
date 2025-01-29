@@ -29,11 +29,26 @@ function PDFViewer({ url }) {
       const viewport = page.getViewport({ scale: 1.0 });
       canvas.height = viewport.height;
       canvas.width = viewport.width;
-      
-      await page.render({
+
+      const renderContext = {
         canvasContext: context,
         viewport: viewport
-      }).promise;
+      };
+
+      try {
+        await page.render(renderContext).promise;
+        
+        const checkRender = () => {
+          if (context.getImageData(0, 0, canvas.width, canvas.height).data.some(x => x !== 0)) {
+            return;
+          }
+          page.render(renderContext);
+        };
+        
+        setTimeout(checkRender, 100);
+      } catch (error) {
+        page.render(renderContext);
+      }
     };
     
     renderPage();
