@@ -8,5 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@react-pdf/renderer": "^4.1.6",
+    "pdfjs-dist": "^4.10.38"
+  }
 }
