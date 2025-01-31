@@ -2,7 +2,7 @@
 
 This project allows serving pdfs in browser from a remote server. Planned features: 
 
-* email link login
+* user login
 * mobile support
 * epub support
 * metadata search
